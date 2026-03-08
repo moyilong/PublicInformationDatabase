@@ -4,5 +4,6 @@
 		<AnalysisMode>all</AnalysisMode>
 		<AnalysisLevel>latest-all</AnalysisLevel>
 		<ImplicitUsings>false</ImplicitUsings>
+		<VersionPrefix>1.0</VersionPrefix>
 	</PropertyGroup>
 </Project>
