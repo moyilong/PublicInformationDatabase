@@ -4,4 +4,5 @@
   </Folder>
   <Project Path="BuildTasks/BuildTasks.csproj" />
   <Project Path="Nozdormu.MacOui/Nozdormu.MacOui.csproj" />
+  <Project Path="TestProject1/TestProject1.csproj" Id="142fa2e3-f7f2-4595-814f-2c3c0be5338a" />
 </Solution>
