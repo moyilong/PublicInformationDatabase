@@ -11,7 +11,7 @@ using Microsoft.Build.Utilities;
 namespace BuildTasks
 {
     /// <summary>
-    /// Mac OUI 编译器
+    /// Mac OUI 数据库生成
     /// </summary>
     public class GenerateMacOUI : Task
     {

@@ -1,6 +1,6 @@
-﻿using Nozdormu.MacOui;
-using System.Net.NetworkInformation;
+﻿using System.Net.NetworkInformation;
 using System.Text.Json;
+using Nozdormu.MacOui;
 
 namespace TestProject1
 {
@@ -14,9 +14,9 @@ namespace TestProject1
         /// </summary>
         /// <param name="inputMac">输入Mac</param>
         /// <param name="isnull">是否有结果</param>
-        [TestCase("00:30:67:ec:cb:22",false)]
-        [TestCase("15:77:64:ec:cb:22",true)]
-        public void TestMac(string inputMac,bool isnull)
+        [TestCase("00:30:67:ec:cb:22", false)]
+        [TestCase("15:77:64:ec:cb:22", true)]
+        public void TestMac(string inputMac, bool isnull)
         {
             var result = MacAddressDB.TryLookup(PhysicalAddress.Parse(inputMac));
             Assert.That(result, isnull ? Is.Null : Is.Not.Null);
