@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: |
           echo "${{ secrets.SNK_BASE64 }}" | base64 -d > ./Signature.snk
-          dotnet build -c Release -p:SignAssembly=true -p:AssemblyOriginatorKeyFile=./Signature.snk
+          dotnet build -c Release -p:SignAssembly=true -p:AssemblyOriginatorKeyFile=../Signature.snk
 
       - name: Publish
         run: |

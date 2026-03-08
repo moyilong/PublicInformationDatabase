@@ -5,7 +5,6 @@
   <Project Path="BuildTasks/BuildTasks.csproj" />
   <Project Path="Nozdormu.MacOui/Nozdormu.MacOui.csproj" />
   <Project Path="Nozdormu.USB/Nozdormu.USB.csproj" Id="840509a3-30e1-41e9-9627-9e5aa6f6baff">
-    <Build Solution="Debug|*" Project="false" />
   </Project>
   <Project Path="TestProject1/TestProject1.csproj" Id="142fa2e3-f7f2-4595-814f-2c3c0be5338a" />
 </Solution>

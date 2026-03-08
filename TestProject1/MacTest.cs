@@ -22,5 +22,22 @@ namespace TestProject1
             Assert.That(result, isnull ? Is.Null : Is.Not.Null);
             Console.WriteLine(JsonSerializer.Serialize(result));
         }
+
+        /// <summary>
+        /// 查询测试
+        /// </summary>
+        [Test]
+        [TestCase(0x00, 0x30, 0x67)] // BIOSTAR RTL8111F
+        [TestCase(0x00, 0x15, 0x5D)] // Hyper-V
+        [TestCase(0x4C, 0x23, 0x38)] // Qualcomm Wifi7 Network
+        [TestCase(0x34, 0x5A, 0x60)] // MSI RTL8125B
+        [TestCase(0x90, 0xe2, 0xba)] // Intel X520-DA2
+        public async Task Test(byte a1, byte a2, byte a3)
+        {
+            var data = MacAddressDB.TryLookup([a1, a2, a3]);
+            ;
+            Assert.That(data, Is.Not.Null);
+            Console.Write(JsonSerializer.Serialize(data));
+        }
     }
 }

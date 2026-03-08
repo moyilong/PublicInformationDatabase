@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
@@ -22,7 +23,6 @@ namespace Nozdormu.USB
         {
             using var fo = Assembly.GetExecutingAssembly().GetManifestResourceStream("usb.ids.gz");
             using var gz = new GZipStream(fo, CompressionMode.Decompress);
-
             using var sr = new StreamReader(gz);
 
             vendor = null;
@@ -48,12 +48,12 @@ namespace Nozdormu.USB
                     {
                         var id = uint.Parse(
                             line.Substring(0, 5),
-                            System.Globalization.NumberStyles.HexNumber,
+                            NumberStyles.HexNumber,
                             null
                         );
-                        if (id == vid)
+                        if (id == pid)
                         {
-                            product = line.Substring(5);
+                            product = line.Substring(6);
                             return true;
                         }
                     }
@@ -63,7 +63,7 @@ namespace Nozdormu.USB
                     line = line.Trim();
                     var id = uint.Parse(
                         line.Substring(0, 5),
-                        System.Globalization.NumberStyles.HexNumber,
+                        NumberStyles.HexNumber,
                         null
                     );
 
