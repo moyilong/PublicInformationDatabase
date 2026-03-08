@@ -16,13 +16,17 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 10.0
+
       - name: Restore Dotnet
         run: dotnet restore
-      - name: Restore SNK file
-        run: echo "${{ secrets.SNK_BASE64 }}" | base64 -d > Signature.snk
-      - name: Build & Publish
+
+      - name: Build
         run: |
-          dotnet build -c Release -p:SignAssembly=true -p:AssemblyOriginatorKeyFile=Signature.snk
+          echo "${{ secrets.SNK_BASE64 }}" | base64 -d > ./Signature.snk
+          dotnet build -c Release -p:SignAssembly=true -p:AssemblyOriginatorKeyFile=./Signature.snk
+
+      - name: Publish
+        run: |
           find -type f | grep \.nupkg$ | while read line ; do
             dotnet nuget push $line --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
           done

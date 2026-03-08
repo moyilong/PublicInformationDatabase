@@ -2,7 +2,6 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<ImplicitUsings>disabled</ImplicitUsings>
-		<SkipGlobalSuppressions>false</SkipGlobalSuppressions>
 		<!-- 告诉 MSBuild 这是一个不需要生成输出的项目 -->
 		<IsSkipNonPreciousTargets>true</IsSkipNonPreciousTargets>
 		<!-- 或者使用更彻底的方式：在 Build 目标执行前直接跳过 -->
