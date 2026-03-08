@@ -1,0 +1,8 @@
+<Project>
+	<PropertyGroup>
+		<LangVersion>latest</LangVersion>
+		<AnalysisMode>all</AnalysisMode>
+		<AnalysisLevel>latest-all</AnalysisLevel>
+		<ImplicitUsings>false</ImplicitUsings>
+	</PropertyGroup>
+</Project>

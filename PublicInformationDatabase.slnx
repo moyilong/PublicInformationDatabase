@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/解决方案项/">
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Project Path="BuildTasks/BuildTasks.csproj" />
+  <Project Path="Nozdormu.MacOui/Nozdormu.MacOui.csproj" />
+</Solution>
