@@ -1,48 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.1</Version>
-    <PackageTags>mac,oui,ieee</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>IEEE MacOUI Lookup from database:https://standards-oui.ieee.org/oui/oui.txt </Description>
-  </PropertyGroup>
-  <Target Name="downloadOUI" BeforeTargets="PreBuildEvent">
-    <DownloadFile
-      SourceUrl="https://standards-oui.ieee.org/oui/oui.txt"
-      DestinationFolder="$(IntermediateOutputPath)"
-      DestinationFileName="oui.txt"
-      Condition="!Exists('$(IntermediateOutputPath)/oui.txt')"
-    ></DownloadFile>
-    <GenerateMacOUI
-      Condition="!Exists('$(IntermediateOutputPath)/oui.bin')"
-      InputFile="$(IntermediateOutputPath)/oui.txt"
-      OutputFile="$(IntermediateOutputPath)/oui.bin"
-    ></GenerateMacOUI>
-  </Target>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Version>1.0.1</Version>
+		<PackageTags>mac,oui,ieee</PackageTags>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Description>IEEE MacOUI Lookup from database:https://standards-oui.ieee.org/oui/oui.txt </Description>
+	</PropertyGroup>
+	<Target Name="downloadOUI" BeforeTargets="PreBuildEvent">
+		<DownloadFile SourceUrl="https://standards-oui.ieee.org/oui/oui.txt" DestinationFolder="$(IntermediateOutputPath)" DestinationFileName="oui.txt" Condition="!Exists('$(IntermediateOutputPath)/oui.txt')"></DownloadFile>
+		<GenerateMacOUI Condition="!Exists('$(IntermediateOutputPath)/oui.bin')" InputFile="$(IntermediateOutputPath)/oui.txt" OutputFile="$(IntermediateOutputPath)/oui.bin"></GenerateMacOUI>
+	</Target>
 
-  <ItemGroup>
-    <Content Include="$(IntermediateOutputPath)/oui.bin">
-      <Link>oui.dat</Link>
-      <CopyToOutputDirectory>IfDifferent</CopyToOutputDirectory>
-      <Pack>true</Pack>
-    </Content>
-  </ItemGroup>
-  <!--生成MacOUI-->
-  <UsingTask
-    TaskName="GenerateMacOUI"
-    TaskFactory="RoslynCodeTaskFactory"
-    AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll"
-  >
-    <ParameterGroup>
-      <InputFile ParameterType="System.String" Required="true" />
-      <OutputFile ParameterType="System.String" Required="true"></OutputFile>
-    </ParameterGroup>
-    <Task>
-      <Code
-        Type="Class"
-        Language="cs"
-        Source="$(MSBuildThisFileDirectory)/../BuildTasks/GenerateMacOUI.cs"
-      ></Code>
-    </Task>
-  </UsingTask>
+	<ItemGroup>
+		<EmbeddedResource Include="$(IntermediateOutputPath)/oui.bin">
+			<Link>oui.dat</Link>
+			<Pack>true</Pack>
+			<LogicalName>oui.dat</LogicalName>
+		</EmbeddedResource>
+	</ItemGroup>
+	<!--生成MacOUI-->
+	<UsingTask TaskName="GenerateMacOUI" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+		<ParameterGroup>
+			<InputFile ParameterType="System.String" Required="true" />
+			<OutputFile ParameterType="System.String" Required="true"></OutputFile>
+		</ParameterGroup>
+		<Task>
+			<Code Type="Class" Language="cs" Source="$(MSBuildThisFileDirectory)/../BuildTasks/GenerateMacOUI.cs"></Code>
+		</Task>
+	</UsingTask>
 </Project>

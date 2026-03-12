@@ -37,12 +37,7 @@ namespace Nozdormu.MacOui
             {
                 throw new ArgumentException($"pfx must by count =3 or =6 but got '{pfx?.Length}'");
             }
-            var path = Path.Combine(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                "oui.dat"
-            );
-
-            using var sr = File.OpenRead(path);
+            using var sr = Assembly.GetExecutingAssembly().GetManifestResourceStream("oui.dat");
             using var br = new BinaryReader(sr);
 
             uint count = br.ReadUInt32();
