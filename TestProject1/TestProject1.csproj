@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Nozdormu.MacOui\Nozdormu.MacOui.csproj" />
+    <ProjectReference Include="..\Nozdormu.USB\Nozdormu.USB.csproj" />
   </ItemGroup>
 
   <ItemGroup>
