@@ -14,7 +14,6 @@
 	<ItemGroup>
 		<EmbeddedResource Include="$(IntermediateOutputPath)/oui.bin">
 			<Link>oui.dat</Link>
-			<Pack>true</Pack>
 			<LogicalName>oui.dat</LogicalName>
 		</EmbeddedResource>
 	</ItemGroup>
